@@ -1,7 +1,7 @@
 angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalprecht.translate',
 'netanimations.threewayhandshake', 'netanimations.sequencenumber', 'netanimations.purealoha',
  'netanimations.hybridmodel', 'netanimations.intraasrouting','netanimations.interasrouting',
- 'netanimations.ethernet'])
+ 'netanimations.ethernet','netanimations.subnets'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -133,7 +133,18 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
       }
     }
   })
+
+  .state('app.subnets', {
+    url: '/subnets',
+    views:{
+        'menuContent': {
+        templateUrl: 'templates/subnets.html',
+        controller: 'SubnetsCtrl'
+      }
+    }
+  })
   ;
+
 
   $urlRouterProvider.otherwise('/app/animations');
 
@@ -304,7 +315,11 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
     ETHERNET_PRESENTATION_16: 'The <b>host A</b> starts a retransmission after waiting a random time.',
     ETHERNET_PRESENTATION_17: 'Also after waiting a random time, the <b>host B</b> starts the retransmission.',
     ETHERNET_PRESENTATION_18: 'In case the frame is not sent up to <b>sixteen attempts</b>,it is discarded.',
-    ETHERNET_ICON: 'Ethernet Protocol icon animation'});
+    ETHERNET_ICON: 'Ethernet Protocol icon animation',
+    
+    SUBNETS_TITLE: 'Subnets',
+    SUBNETS_DESC: 'The importance of using the network mask for creating logical subnets.'
+});
 
   $translateProvider.translations('pt-br', {
     LANGUAGE: 'Idioma',
@@ -488,6 +503,10 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
     ETHERNET_PRESENTATION_17: 'Também após aguardar um tempo aleatório, o <b><span lang=\"en\">host</span> B</b> inicia a retransmissão.',
     ETHERNET_PRESENTATION_18: 'Caso o quadro não seja enviado em no máximo <b>dezesseis tentativas</b>, ele é descartado.',
     ETHERNET_ICON: 'Ícone da animação Protocolo Ethernet.',
+
+    SUBNETS_TITLE: 'Sub-redes',
+    SUBNETS_DESC: 'A importância da utilização da máscara de rede para criação de sub-redes lógicas.'
+
   });
 
   $translateProvider.preferredLanguage('pt-br');
