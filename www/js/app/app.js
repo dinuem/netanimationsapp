@@ -1,7 +1,7 @@
 angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalprecht.translate',
 'netanimations.threewayhandshake', 'netanimations.sequencenumber', 'netanimations.purealoha',
  'netanimations.hybridmodel', 'netanimations.intraasrouting','netanimations.interasrouting',
- 'netanimations.ethernet'])
+ 'netanimations.ethernet','netanimations.subnets'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -133,7 +133,18 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
       }
     }
   })
+
+  .state('app.subnets', {
+    url: '/subnets',
+    views:{
+        'menuContent': {
+        templateUrl: 'templates/subnets.html',
+        controller: 'SubnetsCtrl'
+      }
+    }
+  })
   ;
+
 
   $urlRouterProvider.otherwise('/app/animations');
 
