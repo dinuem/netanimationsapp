@@ -6,5 +6,8 @@
   "type": "ionic1",
   "watchPatterns": [
     "scss/**/*"
-  ]
+  ],
+  "integrations": {
+    "gulp": {}
+  }
 }
