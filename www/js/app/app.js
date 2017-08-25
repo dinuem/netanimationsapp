@@ -508,6 +508,10 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
     SUBNETS_TITLE: 'Sub-redes',
     SUBNETS_DESC: 'A importância da utilização da máscara de rede para criação de sub-redes lógicas.',
     SUBNETS_ICON: 'Ìcone de animação Sub-redes',
+    SUBNETS_PRESENTATION_0: 'Neste exemplo, são apresentadas duas sub-redes com máscara <b>255.255.128.0</b>.',
+    SUBNETS_PRESENTATION_01: 'Uma sub-rede com IP <b>162.103.0.0</b>.',
+    SUBNETS_PRESENTATION_02: 'Outra sub-rede com IP <b>162.103.128.0</b>.',
+
     SUBNETS_PRESENTATION_1: 'Quando um host envia um pacote, ele realiza a operação <b>lógica AND (E)</b> do IP de destino com a máscara da sub-rede para determinar o número da rede.',
     SUBNETS_PRESENTATION_2: 'Aqui, o IP de destino é <b>162.103.136.103</b>. Realizando o E lógico do IP de destino com a máscara da sub-rede nós conseguimos o número da rede <b>162.103.128.0</b>, então o pacote pode ser enviado diretamente para o destinatário desde que esteja na mesma sub-rede.',
     SUBNETS_PRESENTATION_3: 'Agora <b>162.103.126.103</b> irá tentar enviar um pacote para <b>162.103.1.102</b>, um host que está em uma sub-rede <b>DIFERENTE</b>.',
