@@ -37,6 +37,7 @@ angular.module('netanimations.subnets', [])
     TweenLite.defaultEase = Power1.easeInOut;
 
     var subnets = '.subnets';
+    var board = '.subnets-board'
     var widthScreen = window.screen.width;
     var subnetsWidth = window.screen.width*2.5;
     var slideImage = widthScreen*1.52;
@@ -51,12 +52,14 @@ angular.module('netanimations.subnets', [])
     console.log("img", subnetsWidth);
     console.log("center", center); 
 
+    tl.set(board, {width: 0});
+
     tl.add("step1");
     tl.call( function(){
       initialPopup(tl,$translate, $ionicPopup, $state, $scope, $compile, 'INFO', 'SUBNETS_PRESENTATION_0');
     });
-    tl.to('.animationFrame', 3, {x: 0}); //dummy step - do not remove
-  
+    tl.to('.animationFrame', 0.5, {x: 0}); //dummy step - do not remove
+    
     //tl.to(subnets, 1.5, {width: 200});
 
     
@@ -89,10 +92,10 @@ angular.module('netanimations.subnets', [])
     // });
     // tl.to('.animationFrame', 0.5, {x: 0}); //dummy step - do not remove
 
-    // tl.add("step6");
-    // tl.call(function() {
-    //     endPopup(tl,$translate, $ionicPopup, $state, $scope, $compile, 'END', 'SUBNETS_PRESENTATION_6',"step5","step1");
-    // });
+    tl.add("step6");
+    tl.call(function() {
+       endPopup(tl,$translate, $ionicPopup, $state, $scope, $compile, 'END', 'SUBNETS_PRESENTATION_6',"step5","step1");
+    });
   
 });
 
