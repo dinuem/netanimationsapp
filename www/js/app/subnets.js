@@ -42,6 +42,7 @@ angular.module('netanimations.subnets', [])
     var subnetMask = '.subnet-mask';
     var destinationIp1 = '.destination-ip-1';
     var subnetIp1 = '.subnet-ip-1';
+    var convertingToBit = '.conveting-to-bit';
     var widthScreen = window.screen.width;
     var heightScreen = window.screen.height;
 
@@ -90,6 +91,14 @@ angular.module('netanimations.subnets', [])
     tl.set(subnetMask, {
       x:getPositionX(whiteBoardWidth)
     });
+    tl.set(destinationIp1, {
+      x:getPositionX(whiteBoardWidth),
+      y:heightScreen*0.05
+    });
+    tl.set(convertingToBit, {
+      y:heightScreen*0.1,
+      x:getPositionX(whiteBoardWidth)
+    });
 
 
     tl.add("step1");
@@ -130,6 +139,7 @@ angular.module('netanimations.subnets', [])
 
     tl.to(whiteBoard, 0.5, show);
     tl.to(subnetMask, 0.5, show);
+    tl.to(destinationIp1, 0.5, show);
 
 
     tl.call(function() {

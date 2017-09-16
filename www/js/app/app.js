@@ -509,6 +509,8 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
     SUBNETS_DESC: 'A importância da utilização da máscara de rede para criação de sub-redes lógicas.',
     SUBNETS_ICON: 'Ìcone de animação Sub-redes',
     SUBNET_MASK: 'Máscara de sub-rede',
+    SUBNETS_DESTINATION_IP: 'IP de destino',
+    SUBNETS_CONVERTING_TO_BIT: 'Convertendo para binário',
     SUBNETS_PRESENTATION_0: 'Neste exemplo, são apresentadas duas sub-redes com máscara <b>255.255.128.0</b>.',
     SUBNETS_PRESENTATION_01: 'Uma sub-rede com IP <b>162.103.0.0</b>.',
     SUBNETS_PRESENTATION_02: 'Outra sub-rede com IP <b>162.103.128.0</b>.',
