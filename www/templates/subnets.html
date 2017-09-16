@@ -11,9 +11,11 @@
                   <span id="content-buttons"></span>
                 </div>
                 <img id="subnets" class="subnets" src="./img/subnets/connected-subnets.svg" />
-                <img id="subnets-board" class="subnets-board" src="./img/subnets/subnets-board.png" 
-                style="position: absolute; left:0; top:0" />
-
+                <img id="subnets-board" class="subnets-board floating" src="./img/subnets/subnets-board.png" />
+                <div class="white-board floating" style="background-color: white;" ></div>
+                <div class="subnet-mask floating" >255.255.128.0 - {{'SUBNET_MASK' | translate}}</div>
+                <div class="destination-ip-1 floating">162.103.136.103 - {{DESTINATION_IP | translate}}</div>
+                <div class="subnet-ip-1">162.103.128.0</div>
         </div>
         
     </ion-content>
