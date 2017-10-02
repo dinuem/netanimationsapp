@@ -47,6 +47,8 @@ angular.module('netanimations.subnets', [])
     var destinationIp1Bit = '.destination-ip-1-bit';
     var realizingLogicAnd = '.realizing-logic-and';
     var subnetIp1Bit = '.subnet-ip-1-bit';
+    var convertingToDecimal = '.converting-to-decimal';
+    var subnetPackage = '.subnet-package';
     var widthScreen = window.screen.width;
     var heightScreen = window.screen.height;
 
@@ -72,10 +74,11 @@ angular.module('netanimations.subnets', [])
     tl.set(subnets, {width:subnetsWidth}).set(subnets, {y:0}).set(subnets, {x:center});
 
     //initialize black border board
+    var boardY = heightScreen*0.24;
     tl.set(board, {
       width: boardWidth, 
       x:getPositionX(boardWidth), 
-      y:heightScreen*0.24,
+      y:boardY,
       height:boardHeight,
       opacity:0
     });
@@ -97,6 +100,8 @@ angular.module('netanimations.subnets', [])
     tl.set(destinationIp1Bit, hide);
     tl.set(realizingLogicAnd, hide);
     tl.set(subnetIp1Bit, hide);
+    tl.set(convertingToDecimal, hide);
+    tl.set(subnetPackage, hide);
     tl.set(subnetMask, {
       x:getPositionX(whiteBoardWidth)+20
     });
@@ -124,9 +129,22 @@ angular.module('netanimations.subnets', [])
       y:heightScreen*0.45,
       x:getPositionX(whiteBoardWidth)+20
     });
-    tl.set(subnetIp1, {
+    tl.set(convertingToDecimal, {
       y:heightScreen*0.5,
       x:getPositionX(whiteBoardWidth)+20
+    })
+    tl.set(subnetIp1, {
+      y:heightScreen*0.55,
+      x:getPositionX(whiteBoardWidth)+20
+    });
+
+    // initialize package
+    var packageY = heightScreen*0.46;
+    var packageX = heightScreen*0.14;
+    tl.set(subnetPackage, {
+      y:packageY,
+      x:packageX, 
+      rotation: 45
     });
     
 
@@ -176,9 +194,38 @@ angular.module('netanimations.subnets', [])
     tl.to(destinationIp1Bit, 0.5, show);
     tl.to(realizingLogicAnd, 0.5, show);
     tl.to(subnetIp1Bit, 0.5, show);
+    tl.to(convertingToDecimal, 0.5, show);
     tl.to(subnetIp1, 0.5, show);
 
-    tl.to('.animationFrame', 5, {x: 0}); //dummy step - do not remove
+    tl.to(subnetMask, 0.1, hide);
+    tl.to(destinationIp1, 0.1, hide);
+    tl.to(convertingToBit, 0.1, hide);
+    tl.to(subnetMaskBit, 0.1, hide);
+    tl.to(destinationIp1Bit, 0.1, hide);
+    tl.to(realizingLogicAnd, 0.1, hide);
+    tl.to(subnetIp1Bit, 0.1, hide);
+    tl.to(convertingToDecimal, 0.1, hide);
+
+    tl.to(subnetIp1, 0.5, {y:heightScreen*0.25, x:getPositionX(widthScreen/3.5)});
+    tl.to(whiteBoard, 0.5, hide);
+    boardHeight += 55;
+    boardY += 5;
+    tl.to(board, 0.1, {height:boardHeight, y:boardY});
+    tl.to(board, 0.3, show);
+
+    tl.to(subnetIp1, 0.1, hide);
+    tl.to(board, 0.1, hide);
+    
+    tl.to(subnetPackage, 0.5, show);
+
+    packageX = widthScreen*0.75;
+    packageY = heightScreen*0.75;
+    tl.to(subnetPackage, 2, {y:packageY, x:packageX});
+
+    tl.to(subnetPackage, 1, hide);
+
+
+    tl.to('.animationFrame', 1, {x: 0}); //dummy step - do not remove
 
 
     tl.call(function() {
