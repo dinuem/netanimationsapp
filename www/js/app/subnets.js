@@ -43,6 +43,10 @@ angular.module('netanimations.subnets', [])
     var destinationIp1 = '.destination-ip-1';
     var subnetIp1 = '.subnet-ip-1';
     var convertingToBit = '.conveting-to-bit';
+    var subnetMaskBit = '.subnet-mask-bit';
+    var destinationIp1Bit = '.destination-ip-1-bit';
+    var realizingLogicAnd = '.realizing-logic-and';
+    var subnetIp1Bit = '.subnet-ip-1-bit';
     var widthScreen = window.screen.width;
     var heightScreen = window.screen.height;
 
@@ -88,19 +92,46 @@ angular.module('netanimations.subnets', [])
     tl.set(subnetMask, hide);
     tl.set(subnetIp1, hide);
     tl.set(destinationIp1, hide);
+    tl.set(convertingToBit, hide);
+    tl.set(subnetMaskBit, hide);
+    tl.set(destinationIp1Bit, hide);
+    tl.set(realizingLogicAnd, hide);
+    tl.set(subnetIp1Bit, hide);
     tl.set(subnetMask, {
-      x:getPositionX(whiteBoardWidth)
+      x:getPositionX(whiteBoardWidth)+20
     });
     tl.set(destinationIp1, {
-      x:getPositionX(whiteBoardWidth),
+      x:getPositionX(whiteBoardWidth)+20,
       y:heightScreen*0.05
     });
     tl.set(convertingToBit, {
       y:heightScreen*0.1,
-      x:getPositionX(whiteBoardWidth)
+      x:getPositionX(whiteBoardWidth)+20
     });
+    tl.set(subnetMaskBit, {
+      y:heightScreen*0.20,
+      x:getPositionX(whiteBoardWidth)+20
+    })
+    tl.set(destinationIp1Bit, {
+      y:heightScreen*0.30,
+      x:getPositionX(whiteBoardWidth)+20
+    });
+    tl.set(realizingLogicAnd, {
+      y:heightScreen*0.40,
+      x:getPositionX(whiteBoardWidth)+20
+    });
+    tl.set(subnetIp1Bit, {
+      y:heightScreen*0.45,
+      x:getPositionX(whiteBoardWidth)+20
+    });
+    tl.set(subnetIp1, {
+      y:heightScreen*0.5,
+      x:getPositionX(whiteBoardWidth)+20
+    });
+    
 
 
+    // initialize animation
     tl.add("step1");
     tl.call( function(){
       initialPopup(tl,$translate, $ionicPopup, $state, $scope, $compile, 'INFO', 'SUBNETS_PRESENTATION_0');
@@ -140,6 +171,14 @@ angular.module('netanimations.subnets', [])
     tl.to(whiteBoard, 0.5, show);
     tl.to(subnetMask, 0.5, show);
     tl.to(destinationIp1, 0.5, show);
+    tl.to(convertingToBit, 0.5, show);
+    tl.to(subnetMaskBit, 0.5, show);
+    tl.to(destinationIp1Bit, 0.5, show);
+    tl.to(realizingLogicAnd, 0.5, show);
+    tl.to(subnetIp1Bit, 0.5, show);
+    tl.to(subnetIp1, 0.5, show);
+
+    tl.to('.animationFrame', 5, {x: 0}); //dummy step - do not remove
 
 
     tl.call(function() {
