@@ -19,6 +19,12 @@
 	max-height: 100%;
 	width: auto;
 }
+
+.has-header {
+	top:24px; 
+}
+
+
 .twhs-bg {
   background-image: url(../img/threeway-handshake/twhs-bg.svg);
 	background-repeat: no-repeat;
