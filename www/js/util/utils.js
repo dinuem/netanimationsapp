@@ -129,3 +129,45 @@ function endPopup(tl, $translate, $ionicPopup, $state, $scope, $compile, paramTi
     });
   }
 };
+
+function accessibilityPopUp($ionicPopup, $scope){
+  template = {
+    title: "Acessibilidade",
+    template: "Este aplicativo possui configurações de <b>acessibilidade</b>. "+
+    "Deseja <b>desativar</b>? Posteriormente você poderá alterar esta propriedade na tela de configurações.",
+    buttons:[
+      {
+        text:'Sim',
+        type:'button-positive',
+        onTap: function(){
+          $scope.audiovisual = false;
+          savePreferences($scope);
+        }
+      },
+      {
+        text:'Não',
+        type:'button-positive',
+        onTap: function(){
+          $scope.audiovisual = true;
+          savePreferences($scope);
+        }
+      }
+    ]
+  };
+  window.localStorage['firstTimeOk'] = true;
+  
+  $ionicPopup.show(template);
+}
+
+
+function savePreferences($scope){
+  if($scope.audiovisual === null)
+    $scope.audiovisual = true;
+
+  if(!$scope.lang)
+    $scope.lang = 'pt-br';
+
+  var preferencesCookie = $scope.lang+","+$scope.audiovisual;
+  window.localStorage['preferences'] = preferencesCookie;
+}
+
