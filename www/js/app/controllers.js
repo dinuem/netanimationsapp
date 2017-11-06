@@ -1,6 +1,6 @@
 angular.module('netanimations.controllers', [])
 
-.controller('AppCtrl', function($scope, $state, $translate, $window) {
+.controller('AppCtrl', function($scope, $state, $ionicPopup, $translate, $window) {
   $scope.setFocus = function(elem,collapseElem){
     var ariaExpanded = document.getElementById(collapseElem).getAttribute('aria-expanded');
     if(ariaExpanded === "false"){
@@ -11,6 +11,7 @@ angular.module('netanimations.controllers', [])
 
   $scope.readPreference = function(){
     var preferencesCookie = $window.localStorage['preferences'];
+    console.log("prefs:", preferencesCookie);
     if(!preferencesCookie){
       $scope.audiovisual = true;
       $scope.lang = "pt-br";
@@ -20,6 +21,15 @@ angular.module('netanimations.controllers', [])
       $scope.audiovisual = (preferencesCookie.split(",")[1] === "true")? true : false;
     }
   };
+
+  $scope.verifyFirstTime = function() {
+    var firstTimeOk = $window.localStorage['firstTimeOk'];
+    console.log("firstOk??", firstTimeOk);
+    if(!firstTimeOk || firstTimeOk == 'false'){
+      console.log(firstTimeOk);
+      accessibilityPopUp($ionicPopup, $scope);
+    }
+  }
 
   $scope.changeAudiovisual = function (key){
     $scope.audiovisual = key;
@@ -47,6 +57,8 @@ angular.module('netanimations.controllers', [])
   };
 
   $scope.readPreference();
+  $scope.verifyFirstTime();
+
 })
 
 .controller('AnimationsCtrl', function($scope) {
@@ -69,6 +81,7 @@ angular.module('netanimations.controllers', [])
 
   $scope.savePreferences = function (){
     var preferencesCookie = $scope.lang+","+$scope.audiovisual;
+    console.log("saving", preferencesCookie);
     $window.localStorage['preferences'] = preferencesCookie;
     $state.go('app.animations');
   }
@@ -85,3 +98,5 @@ angular.module('netanimations.controllers', [])
     document.getElementById('mapmenu').focus();
   });
 });
+
+
