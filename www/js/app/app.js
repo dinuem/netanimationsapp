@@ -516,12 +516,14 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
     SUBNETS_PRESENTATION_0: 'Neste exemplo, são apresentadas duas sub-redes com máscara <b>255.255.128.0</b>.',
     SUBNETS_PRESENTATION_01: 'Uma sub-rede com IP <b>162.103.0.0</b>.',
     SUBNETS_PRESENTATION_02: 'Outra sub-rede com IP <b>162.103.128.0</b>.',
+    SUBNETS_PRESENTATION_03: 'Quando um host envia um pacote, ele realiza a operação <b>lógica AND (E)</b> do IP de destino com a máscara da sub-rede para determinar o número da rede de destino.',
+    SUBNETS_PRESENTATION_04: 'Aqui, o IP de destino é <b>162.103.136.103</b>. Realizando o E lógico do IP de destino com a máscara da sub-rede nós conseguimos o número da rede <b>162.103.128.0</b>, então o pacote pode ser enviado diretamente para o destinatário desde que esteja na mesma sub-rede.',
+    SUBNETS_PRESENTATION_05: 'Podemos ver que o IP da rede de destino encontrado é o mesmo da origem, então o pacote é enviado diretamente.',
+    SUBNETS_PRESENTATION_06: 'Agora o host <b>162.103.136.103</b> irá tentar enviar um pacote para o host <b>162.103.1.102</b>, que está em uma sub-rede <b>DIFERENTE</b>.',
+    SUBNETS_PRESENTATION_07: 'O roteador possui uma tabela de repasse que contém uma máscara de sub-rede e um endereço de rede para cada rede. Ele realiza o E lógico entre o IP destino com cada máscara de sub-rede até encontrar o endereço de rede apropriado.',
 
-    SUBNETS_PRESENTATION_1: 'Quando um host envia um pacote, ele realiza a operação <b>lógica AND (E)</b> do IP de destino com a máscara da sub-rede para determinar o número da rede.',
-    SUBNETS_PRESENTATION_2: 'Aqui, o IP de destino é <b>162.103.136.103</b>. Realizando o E lógico do IP de destino com a máscara da sub-rede nós conseguimos o número da rede <b>162.103.128.0</b>, então o pacote pode ser enviado diretamente para o destinatário desde que esteja na mesma sub-rede.',
-    SUBNETS_PRESENTATION_3: 'Agora <b>162.103.126.103</b> irá tentar enviar um pacote para <b>162.103.1.102</b>, um host que está em uma sub-rede <b>DIFERENTE</b>.',
+
     SUBNETS_PRESENTATION_4: 'Realizando o <b>E</b> lógico do IP destino, <b>162.103.1.102</b>, com a máscara de sub-rede conseguimos um endereço de rede diferente, então o pacote é <b>enviado para o roteador</b>.',
-    SUBNETS_PRESENTATION_5: 'O roteador possui uma tabela de repasse que contém uma máscara de sub-rede e um endereço de rede para cada rede. Ele realiza o E lógico entre o IP destino com cada máscara de sub-rede até encontrar o endereço de rede apropriado.',
     SUBNETS_PRESENTATION_6: 'E então o roteador envia o pacote para seu destino final na sub-rede.'
   });
 
