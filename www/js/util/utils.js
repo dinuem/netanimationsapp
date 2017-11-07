@@ -4,6 +4,7 @@ function playAudio(audio,source){
 }
 
 function cleanContentInfo(){
+  document.getElementById('accessibility-content').style.display = 'none';
   document.getElementById('content-title').innerHTML = "";
   document.getElementById('content-text').innerHTML = "";
   document.getElementById('content-buttons').innerHTML = "";
@@ -12,6 +13,7 @@ function cleanContentInfo(){
 function initialPopup(tl, $translate, $ionicPopup, $state, $scope, $compile, paramTitle, paramTemplate){
   tl.pause();
   if($scope.audiovisual){
+    document.getElementById('accessibility-content').style.display = 'block';
     document.getElementById('content-title').innerHTML = $translate.instant('INFO');
     document.getElementById('content-text').innerHTML = $translate.instant(paramTitle)+":"+$translate.instant(paramTemplate);
     document.getElementById('content-buttons').innerHTML = "<a role=\"button\" ng-click=\"accessibilityGo('next')\" href=\"\">"
@@ -49,6 +51,7 @@ function initialPopup(tl, $translate, $ionicPopup, $state, $scope, $compile, par
 function commonPopup(tl, $scope, $compile, $translate, $ionicPopup, paramTitle, paramTemplate, paramBack){
   tl.pause(); //interrupção do fluxo do objeto de animação
   if($scope.audiovisual){
+    document.getElementById('accessibility-content').style.display = 'block';
     document.getElementById('content-title').innerHTML = $translate.instant('INFO');
     document.getElementById('content-text').innerHTML = $translate.instant(paramTitle)+":"+$translate.instant(paramTemplate);
     document.getElementById('content-buttons').innerHTML = "<a role=\"button\" ng-click=\"accessibilityGo('next')\" href=\"\">"
@@ -87,9 +90,10 @@ function commonPopup(tl, $scope, $compile, $translate, $ionicPopup, paramTitle, 
 function endPopup(tl, $translate, $ionicPopup, $state, $scope, $compile, paramTitle, paramTemplate, paramBack,paramRestart){
   tl.pause();
   if($scope.audiovisual){
+    document.getElementById('accessibility-content').style.display = 'block';
     document.getElementById('content-title').innerHTML = $translate.instant('INFO');
     document.getElementById('content-text').innerHTML = $translate.instant(paramTitle)+":"+$translate.instant(paramTemplate);
-    document.getElementById('content-buttons').innerHTML = "<a role=\"button\" ng-click=\"accessibilityGo('exit')\" href=\"\">"
+    document.getElementById('content-buttons').innerHTML = "<a role=\"button\" ng-click=\"accessibilityGo('exit', 'app.animations')\" href=\"\">"
                                +$translate.instant('FINISH')+"</a>"
                                +"<a role=\"button\" ng-click=\"accessibilityGo('back','"+paramBack+"')\" href=\"\">"
                                +$translate.instant('BACK')+"</a>"

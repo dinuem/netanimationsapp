@@ -194,3 +194,20 @@
 	left: 0;
 	top: 0;
 }
+
+#accessibility-content{
+	position: absolute;
+	left: 5%;
+	top: 0;
+	box-shadow: 5px 5px 1px #777;
+	z-index: 2;
+	width: 90%;
+	border: solid 1px;
+	padding: 50px;
+}
+
+#content-buttons>a {
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid #000000;
+}
