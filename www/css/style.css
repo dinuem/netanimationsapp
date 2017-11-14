@@ -204,6 +204,7 @@
 	width: 90%;
 	border: solid 1px;
 	padding: 50px;
+	display: none;
 }
 
 #content-buttons>a {

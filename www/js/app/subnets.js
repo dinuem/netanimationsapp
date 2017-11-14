@@ -69,12 +69,14 @@ angular.module('netanimations.subnets', [])
     // initialize background
     //tl.set(subnets, {width:subnetsWidth}).set(subnets, {y:0}).set(subnets, {x:center});
     var subnetsHeight = heightScreen * 0.80;
+    var subnetsWidth = subnetsHeight * 1.9116;
     tl.set(subnets, { height: subnetsHeight })
       .set(subnets, { y: heightScreen * 0.05 });
-    var subnetsWidth = document.getElementsByClassName('subnets')[0].width;
+    //var subnetsWidth = document.getElementsByClassName('subnets')[0].width;
 
     var center = ((subnetsWidth / 2) - (widthScreen / 2)) * -1;
     tl.set(subnets, { x: center });
+
 
     var left = 0;
     var right = (subnetsWidth - widthScreen) * -1;
@@ -173,6 +175,13 @@ angular.module('netanimations.subnets', [])
       x: packageX,
       rotation: 42
     });
+    var audiovisualPreference = $scope.audiovisual;
+
+    var audio = new Audio();
+    //audio.src = 'audio/subnets/1-2.ogg';
+    audio.addEventListener('loadedmetadata', function () {
+      console.log("Load " + audio.src + ", for: " + audio.duration + "seconds.");
+    });
 
 
 
@@ -183,8 +192,15 @@ angular.module('netanimations.subnets', [])
     });
     tl.to('.animationFrame', 0.5, { x: 0 }); //dummy step - do not remove
 
-    tl.to(board, 1, { opacity: 1 });
-    tl.to(board, 1, { opacity: 0 });
+    if (audiovisualPreference) {
+      tl.to(audio, 1, { onComplete: function () { playAudio(audio, 'audio/subnets/1-2.ogg') } });
+      tl.to(board, 11, show);
+      tl.to(board, 2, hide);
+    }
+    else {
+      tl.to(board, 1, { opacity: 1 });
+      tl.to(board, 1, { opacity: 0 });
+    }
 
     tl.add("step2");
     tl.call(function () {
@@ -194,17 +210,35 @@ angular.module('netanimations.subnets', [])
 
     boardHeight = heightScreen * 0.20;
     boardWidth = subnetsWidth * 0.40;
-    tl.to(subnets, 1, { x: left });
     boardY = heightScreen * 0.35;
     boardX = getPositionX(boardWidth);
-    tl.to(board, 0, {
-      height: boardHeight,
-      width: boardWidth,
-      y: boardY, x: boardX
-    });
 
-    tl.to(board, 1, show);
-    tl.to(board, 1, hide);
+    if (audiovisualPreference) {
+      //audio.src = 'audio/subnets/2-3.ogg';
+      tl.to(audio, 1, { onComplete: function () { playAudio(audio, 'audio/subnets/2-3.ogg') } });
+
+      tl.to(subnets, 4, { x: left });
+      tl.to(board, 1, {
+        height: boardHeight,
+        width: boardWidth,
+        y: boardY, x: boardX
+      });
+
+      tl.to(board, 4, show);
+      tl.to(board, 1, hide);
+    }
+    else {
+      tl.to(subnets, 1, { x: left });
+      tl.to(board, 0, {
+        height: boardHeight,
+        width: boardWidth,
+        y: boardY, x: boardX
+      });
+
+      tl.to(board, 1, show);
+      tl.to(board, 1, hide);
+    }
+
 
     tl.add("step3");
     tl.call(function () {
@@ -212,10 +246,20 @@ angular.module('netanimations.subnets', [])
     });
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove
 
-    tl.to(subnets, 1, { x: right });
-    tl.to(board, 0.1, { x: boardX });
-    tl.to(board, 1, show);
-    tl.to(board, 1, hide);
+
+    if (audiovisualPreference) {
+      tl.to(audio, 1, { onComplete: function () { playAudio(audio, 'audio/subnets/3-4.ogg') } });
+      tl.to(subnets, 4, { x: right });
+      //tl.to(board, 0.1, { x: boardX });
+      tl.to(board, 7, show);
+      tl.to(board, 1, hide);
+    }
+    else {
+      tl.to(subnets, 1, { x: right });
+      tl.to(board, 0.1, { x: boardX });
+      tl.to(board, 1, show);
+      tl.to(board, 1, hide);
+    }
 
     tl.add("step4");
     tl.call(function () {
@@ -229,26 +273,53 @@ angular.module('netanimations.subnets', [])
     });
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove
 
-    tl.to(whiteBoard, 1, show);
-    tl.to(subnetMask, 1, show);
-    tl.to(destinationIp1, 1, show);
-    tl.to(convertingToBit, 2, show);
-    tl.to(subnetMaskBit, 2, show);
-    tl.to(destinationIp1Bit, 1, show);
+    if (audiovisualPreference) {
+      tl.to(audio, 1, { onComplete: function () { playAudio(audio, 'audio/subnets/5-6.ogg') } });
+      tl.to(whiteBoard, 3, show);
+      tl.to(subnetMask, 3, show);
+      tl.to(destinationIp1, 3, show);
+      tl.to(convertingToBit, 3, show);
+      tl.to(subnetMaskBit, 3, show);
+      tl.to(destinationIp1Bit, 3, show);
 
-    tl.to(realizingLogicAnd, 1, show);
-    tl.to(subnetIp1Bit, 1, show);
-    tl.to(convertingToDecimal, 1.5, show);
-    tl.to(subnetIp1, 1, show);
+      tl.to(realizingLogicAnd, 3, show);
+      tl.to(subnetIp1Bit, 3, show);
+      tl.to(convertingToDecimal, 3, show);
+      tl.to(subnetIp1, 3, show);
 
-    tl.to(subnetMask, 0.1, hide);
-    tl.to(destinationIp1, 0.1, hide);
-    tl.to(convertingToBit, 0.1, hide);
-    tl.to(subnetMaskBit, 0.1, hide);
-    tl.to(destinationIp1Bit, 0.1, hide);
-    tl.to(realizingLogicAnd, 0.1, hide);
-    tl.to(subnetIp1Bit, 0.1, hide);
-    tl.to(convertingToDecimal, 0.1, hide);
+      tl.to(subnetMask, 0.1, hide);
+      tl.to(destinationIp1, 0.1, hide);
+      tl.to(convertingToBit, 0.1, hide);
+      tl.to(subnetMaskBit, 0.1, hide);
+      tl.to(destinationIp1Bit, 0.1, hide);
+      tl.to(realizingLogicAnd, 0.1, hide);
+      tl.to(subnetIp1Bit, 0.1, hide);
+      tl.to(convertingToDecimal, 0.1, hide);
+    }
+    else {
+      tl.to(whiteBoard, 1, show);
+      tl.to(subnetMask, 1, show);
+      tl.to(destinationIp1, 1, show);
+      tl.to(convertingToBit, 2, show);
+      tl.to(subnetMaskBit, 2, show);
+      tl.to(destinationIp1Bit, 1, show);
+
+      tl.to(realizingLogicAnd, 1, show);
+      tl.to(subnetIp1Bit, 1, show);
+      tl.to(convertingToDecimal, 1.5, show);
+      tl.to(subnetIp1, 1, show);
+
+      tl.to(subnetMask, 0.1, hide);
+      tl.to(destinationIp1, 0.1, hide);
+      tl.to(convertingToBit, 0.1, hide);
+      tl.to(subnetMaskBit, 0.1, hide);
+      tl.to(destinationIp1Bit, 0.1, hide);
+      tl.to(realizingLogicAnd, 0.1, hide);
+      tl.to(subnetIp1Bit, 0.1, hide);
+      tl.to(convertingToDecimal, 0.1, hide);
+    }
+
+
 
     tl.to('.animationFrame', 3, { x: 0 }); //dummy step - do not remove
 
@@ -258,66 +329,108 @@ angular.module('netanimations.subnets', [])
     });
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove
 
-    tl.to(subnetIp1, 1, { y: heightScreen * 0.30, x: widthScreen * 0.40 });
-    tl.to(whiteBoard, 1, hide);
+
     boardHeight = heightScreen * 0.28;
     boardY = heightScreen * 0.30;
-    tl.to(board, 0.1, { height: boardHeight, y: boardY });
-    tl.to(board, 1, show);
-    tl.to('.animationFrame', 3, { x: 0 }); //dummy step - do not remove
-
-    tl.to(subnetIp1, 0.1, hide);
-    tl.to(board, 1, hide);
-
-    tl.to(subnetPackage, 1, show);
-
     packageX = subnetsWidth * 0.33;
     packageY = subnetsHeight * 0.99;
-    tl.to(subnetPackage, 4, { y: packageY, x: packageX });
-
-    tl.to(subnetPackage, 1, hide);
-
+    
+    if (audiovisualPreference) {
+      tl.to(audio, 1, { onComplete: function () { playAudio(audio, 'audio/subnets/6-7.ogg') } });
+      tl.to(subnetIp1, 3, { y: heightScreen * 0.30, x: widthScreen * 0.40 });
+      tl.to(whiteBoard, 1, hide);
+      tl.to(board, 0.1, { height: boardHeight, y: boardY });
+      tl.to(board, 1, show);
+      tl.to('.animationFrame', 3, { x: 0 }); //dummy step - do not remove
+      tl.to(subnetIp1, 0.1, hide);
+      tl.to(board, 3, hide);
+      tl.to(subnetPackage, 1, show);
+      tl.to(subnetPackage, 3, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 1, hide);
+    }
+    else {
+      tl.to(subnetIp1, 1, { y: heightScreen * 0.30, x: widthScreen * 0.40 });
+      tl.to(whiteBoard, 1, hide);
+      tl.to(board, 0.1, { height: boardHeight, y: boardY });
+      tl.to(board, 1, show);
+      tl.to('.animationFrame', 3, { x: 0 }); //dummy step - do not remove
+      tl.to(subnetIp1, 0.1, hide);
+      tl.to(board, 1, hide);
+      tl.to(subnetPackage, 1, show);
+      tl.to(subnetPackage, 4, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 1, hide);
+    }
     tl.add("step7");
     tl.call(function () {
       commonPopup(tl, $scope, $compile, $translate, $ionicPopup, 'INFO', 'SUBNETS_PRESENTATION_06', "step6", "step1");
     });
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove   
-
-    tl.to(whiteBoard, 1, show);
-    tl.to(subnetMask, 1, show);
-
+    
     tl.set(destinationIp2, {
       x: getPositionX(whiteBoardWidth) + 20,
       y: heightScreen * 0.075
     });
-
-    tl.to(destinationIp2, 1, show);
-    tl.to(convertingToBit, 1, show);
-    tl.to(subnetMaskBit, 1, show);
-    tl.to(destinationIp2Bit, 1, show);
-    tl.to(realizingLogicAnd, 1, show);
-    tl.to(subnetIp2Bit, 1, show);
-    tl.to(convertingToDecimal, 1, show);
-    tl.to(subnetIp2, 1, show);
-
-    tl.to(subnetMask, 0.1, hide);
-    tl.to(destinationIp2, 0.1, hide);
-    tl.to(convertingToBit, 0.1, hide);
-    tl.to(subnetMaskBit, 0.1, hide);
-    tl.to(destinationIp2Bit, 0.1, hide);
-    tl.to(realizingLogicAnd, 0.1, hide);
-    tl.to(subnetIp2Bit, 0.1, hide);
-    tl.to(convertingToDecimal, 0.1, hide);
-    tl.to(subnetIp2, 1, hide);
-    tl.to(whiteBoard, 1, hide);
-
-    tl.to(subnetPackage, 1, show);
-
-    packageX = subnetsWidth * 0.20;
-    packageY = subnetsHeight * 0.80;
-    tl.to(subnetPackage, 3, { y: packageY, x: packageX });
-    tl.to(subnetPackage, 1, { rotation: 0 });
-    tl.to(subnets, 2, { x: center });
+    
+    if(audiovisualPreference){
+      tl.to(audio, 1, {onComplete: function(){playAudio(audio, 'audio/subnets/7-8.ogg')}});
+      tl.to(whiteBoard, 3, show);
+      tl.to(subnetMask, 3, show);
+      tl.to(destinationIp2, 3, show);
+      tl.to(convertingToBit, 3, show);
+      tl.to(subnetMaskBit, 3, show);
+      tl.to(destinationIp2Bit, 3, show);
+      tl.to(realizingLogicAnd, 3, show);
+      tl.to(subnetIp2Bit, 3, show);
+      tl.to(convertingToDecimal, 3, show);
+      tl.to(subnetIp2, 3, show);
+      tl.to(subnetMask, 0.1, hide);
+      tl.to(destinationIp2, 0.1, hide);
+      tl.to(convertingToBit, 0.1, hide);
+      tl.to(subnetMaskBit, 0.1, hide);
+      tl.to(destinationIp2Bit, 0.1, hide);
+      tl.to(realizingLogicAnd, 0.1, hide);
+      tl.to(subnetIp2Bit, 0.1, hide);
+      tl.to(convertingToDecimal, 0.1, hide);
+      tl.to(subnetIp2, 1, hide);
+      tl.to(whiteBoard, 1, hide);
+      tl.to(subnetPackage, 3, show);
+  
+      packageX = subnetsWidth * 0.20;
+      packageY = subnetsHeight * 0.80;
+      tl.to(subnetPackage, 3, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 3, { rotation: 0 });
+      tl.to(subnets, 3, { x: center });
+    }
+    else{
+      tl.to(whiteBoard, 1, show);
+      tl.to(subnetMask, 1, show);
+      tl.to(destinationIp2, 1, show);
+      tl.to(convertingToBit, 1, show);
+      tl.to(subnetMaskBit, 1, show);
+      tl.to(destinationIp2Bit, 1, show);
+      tl.to(realizingLogicAnd, 1, show);
+      tl.to(subnetIp2Bit, 1, show);
+      tl.to(convertingToDecimal, 1, show);
+      tl.to(subnetIp2, 1, show);
+      tl.to(subnetMask, 0.1, hide);
+      tl.to(destinationIp2, 0.1, hide);
+      tl.to(convertingToBit, 0.1, hide);
+      tl.to(subnetMaskBit, 0.1, hide);
+      tl.to(destinationIp2Bit, 0.1, hide);
+      tl.to(realizingLogicAnd, 0.1, hide);
+      tl.to(subnetIp2Bit, 0.1, hide);
+      tl.to(convertingToDecimal, 0.1, hide);
+      tl.to(subnetIp2, 1, hide);
+      tl.to(whiteBoard, 1, hide);
+      tl.to(subnetPackage, 1, show);
+  
+      packageX = subnetsWidth * 0.20;
+      packageY = subnetsHeight * 0.80;
+      tl.to(subnetPackage, 3, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 1, { rotation: 0 });
+      tl.to(subnets, 2, { x: center });
+    }
+   
 
     tl.add("step8");
     tl.call(function () {
@@ -325,13 +438,24 @@ angular.module('netanimations.subnets', [])
     });
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove   
 
-    tl.to(subnets, 2, { x: left });
-    tl.to(subnetPackage, 1, { rotation: -42 });
+    
     packageX = subnetsWidth * 0.07;
     packageY = subnetsHeight * 0.99;
-    tl.to(subnetPackage, 3, { y: packageY, x: packageX });
-    tl.to(subnetPackage, 1, hide);
 
+    if(audiovisualPreference){
+      tl.to(audio, 1, {onComplete: function(){playAudio(audio, 'audio/subnets/9-10.ogg')}});
+      tl.to(subnets, 3, { x: left });
+      tl.to(subnetPackage, 1, { rotation: -42 });
+      tl.to(subnetPackage, 3, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 1, hide);
+    }
+    else{
+      tl.to(subnets, 2, { x: left });
+      tl.to(subnetPackage, 1, { rotation: -42 });
+      tl.to(subnetPackage, 3, { y: packageY, x: packageX });
+      tl.to(subnetPackage, 1, hide);
+    }
+    
 
     tl.to('.animationFrame', 1, { x: 0 }); //dummy step - do not remove
 
