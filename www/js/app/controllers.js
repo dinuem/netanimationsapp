@@ -11,7 +11,6 @@ angular.module('netanimations.controllers', [])
 
   $scope.readPreference = function(){
     var preferencesCookie = $window.localStorage['preferences'];
-    console.log("prefs:", preferencesCookie);
     if(!preferencesCookie){
       $scope.audiovisual = true;
       $scope.lang = "pt-br";
@@ -24,7 +23,6 @@ angular.module('netanimations.controllers', [])
 
   $scope.verifyFirstTime = function() {
     var firstTimeOk = $window.localStorage['firstTimeOk'];
-    console.log("firstOk??", firstTimeOk);
     if(!firstTimeOk || firstTimeOk == 'false'){
       console.log(firstTimeOk);
       accessibilityPopUp($ionicPopup, $scope);
