@@ -328,8 +328,39 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
       ETHERNET_ICON: 'Ethernet Protocol icon animation',
 
       SUBNETS_TITLE: 'Subnets',
-      SUBNETS_DESC: 'The importance of using the network mask for creating logical subnets.',
-      SUBNETS_ICON: 'Subnets icon animation'
+      SUBNETS_DESC: 'Presentation of concepts of packet transmission between subnets.',
+      SUBNETS_ICON: 'Animation icon Subnets',
+      SUBNET_MASK: 'Subnet Mask',
+      SUBNETS_DESTINATION_IP: 'Destination IP',
+      SUBNETS_CONVERTING_TO_BIT: 'Converting to binary',
+      SUBNETS_REALIZING_LIGIC_AND: 'Performing logical "AND"',
+      SUBNETS_CONVERTING_TO_DECIMAL: 'Converting to decimal',
+      SUBNETS_PRESENTATION_0: 'In this example, two subnets with mask <b> 255.255.128.0 </ b> are displayed.',
+      SUBNETS_PRESENTATION_01: 'A subnet with IP <b> 162.103.0.0 </ b>.',
+      SUBNETS_PRESENTATION_02: 'Another subnet with IP <b> 162.103.128.0 </ b>.',
+      SUBNETS_PRESENTATION_03: 'When a host sends a packet, it performs the logical AND (E) </ b> operation of the destination IP with the subnet mask to determine the destination network number.',
+      SUBNETS_PRESENTATION_04: 'Here, the destination IP is <b> 162.103.136.103 </ b>. By performing the logical IP of the destination IP with the subnet mask we can get the network number <b> 162.103.128.0 </ b>, then the packet can be sent directly to the recipient as long as it is on the same subnet .',
+      SUBNETS_PRESENTATION_05: 'We can see that the IP of the destination network found is the same as that of the source, so the packet is sent directly.',
+      SUBNETS_PRESENTATION_06: 'Now host <b> 162.103.136.103 </ b> will try to send a packet to host <b> 162.103.1.102 </ b>, which is on a <b> DIFFERENT subnet </ b>.',
+      SUBNETS_PRESENTATION_07: 'The router has a forwarding table that contains a subnet mask and a network address for each network. It performs the logical AND between the destination IP with each subnet mask until it finds the appropriate network address.',
+      SUBNETS_PRESENTATION_6: 'And then the router sends the packet to its final destination on the subnet.',
+
+
+      SUBNET_MASK_TITLE: 'Subnet Mask',
+      SUBNET_MASK_DESC: 'The importance of using the netmask for creating logical subnets.',
+      SUBNET_MASK_ICON: 'Subnet Mask Animation Icon',
+      SUBNET_MASK_DEFAULT_MASK: 'Default Mask',
+      SUBNET_MASK_CONVERTING_TO_BIT: 'Converting to binary',
+      SUBNET_MASK_BITS_ARE: 'These bits are for:',
+      SUBNET_MASK_NET: 'Network',
+      SUBNET_MASK_HOST: 'Host',
+      SUBNET_MASK_PRESENTATION_1: 'The following is a network connected to the Internet. The IP of the network is a <b> Class B address </ b>. This means that 2 bytes identify the host and 2 bytes the network.',
+      SUBNET_MASK_PRESENTATION_2: 'Because 2 bytes are used for hosts, it is possible to have a total of 65536 addresses for a given Class B network.',
+      SUBNET_MASK_PRESENTATION_3: 'A subnet mask is used to determine which bits will be used for the network and which will be used for the hosts, the 16 bits on the left are the default mask for Class B addresses.',
+      SUBNET_MASK_PRESENTATION_4: 'In order to efficiently use the address space, we need to divide the network into logical subnets.',
+      SUBNET_MASK_PRESENTATION_5: 'Here we create two subnets by extending the subnet mask in 1 bit. Now the network part is composed of 16 bits, the part of the subnet is composed of one bit and the part of the hosts is 15 bits. Each subnet is connected to a switch.',
+      SUBNET_MASK_PRESENTATION_6: 'With 1 extra bit for the part of the network, being able to assume 1 or 0, we can create two logical networks.',
+      SUBNET_MASK_PRESENTATION_7: 'These subnets may in the future be broken into more subnets in a similar way.'
     });
 
     $translateProvider.translations('pt-br', {
@@ -531,9 +562,6 @@ angular.module('netanimations', ['ionic', 'netanimations.controllers', 'pascalpr
       SUBNETS_PRESENTATION_05: 'Podemos ver que o IP da rede de destino encontrado é o mesmo da origem, então o pacote é enviado diretamente.',
       SUBNETS_PRESENTATION_06: 'Agora o host <b>162.103.136.103</b> irá tentar enviar um pacote para o host <b>162.103.1.102</b>, que está em uma sub-rede <b>DIFERENTE</b>.',
       SUBNETS_PRESENTATION_07: 'O roteador possui uma tabela de repasse que contém uma máscara de sub-rede e um endereço de rede para cada rede. Ele realiza o E lógico entre o IP destino com cada máscara de sub-rede até encontrar o endereço de rede apropriado.',
-
-
-      SUBNETS_PRESENTATION_4: 'Realizando o <b>E</b> lógico do IP destino, <b>162.103.1.102</b>, com a máscara de sub-rede conseguimos um endereço de rede diferente, então o pacote é <b>enviado para o roteador</b>.',
       SUBNETS_PRESENTATION_6: 'E então o roteador envia o pacote para seu destino final na sub-rede.',
 
       SUBNET_MASK_TITLE: 'Máscara de Sub-rede',
