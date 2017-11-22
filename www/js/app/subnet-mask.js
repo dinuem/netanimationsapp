@@ -209,6 +209,9 @@ angular.module('netanimations.subnet-mask', [])
     tl.to(bar1, .1, show);
     tl.to(bar2, .1, show);
 
+    tl.to('.animationFrame', 3, { x: 0 }); //dummy step - do not remove
+    
+
     tl.add("step5");
     tl.call(function () {
       commonPopup(tl, $scope, $compile, $translate, $ionicPopup, 'INFO', 'SUBNET_MASK_PRESENTATION_5', "step4", "step1");
@@ -219,15 +222,18 @@ angular.module('netanimations.subnet-mask', [])
     tl.to(newMask, 1, show);
     tl.to(convertingToBit, 1, show);
     tl.to(newMaskBit, 1, show);
-    tl.to(maskBit1, 2, {css:{'font-weight': 600}})
-    tl.to(newMaskBit, .5, hide);
-    tl.to(convertingToBit, .5, hide);
-    tl.to(whiteBoard, .5, hide);
+    tl.to(maskBit1, 1, {css:{'font-weight': 600}})
+    tl.to('.animationFrame', 2, { x: 0 }); //dummy step - do not remove
+    tl.to(newMaskBit, 1, hide);
+    tl.to(convertingToBit, 1, hide);
+    tl.to(whiteBoard, 1, hide);
     
     tl.to(newMask, 1, {
       x:window.screen.width*0.3,
       y:window.screen.height*0.13
     });
+
+    tl.to('.animationFrame', 2, { x: 0 }); //dummy step - do not remove
 
     tl.add("step6");
     tl.call(function () {

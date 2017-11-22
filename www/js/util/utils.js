@@ -141,7 +141,7 @@ function accessibilityPopUp($ionicPopup, $scope){
     "Deseja <b>desativar</b>? Posteriormente você poderá alterar esta propriedade na tela de configurações.",
     buttons:[
       {
-        text:'Sim',
+        text:'Desativar',
         type:'button-positive',
         onTap: function(){
           $scope.audiovisual = false;
@@ -149,7 +149,7 @@ function accessibilityPopUp($ionicPopup, $scope){
         }
       },
       {
-        text:'Não',
+        text:'Manter acessibilidade',
         type:'button-positive',
         onTap: function(){
           $scope.audiovisual = true;
