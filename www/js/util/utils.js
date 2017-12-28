@@ -137,7 +137,7 @@ function endPopup(tl, $translate, $ionicPopup, $state, $scope, $compile, paramTi
 function accessibilityPopUp($ionicPopup, $scope){
   template = {
     title: "Acessibilidade",
-    template: "Este aplicativo possui configurações de <b>acessibilidade</b>. "+
+    template: "Este aplicativo possui configurações de <b>acessibilidade visual</b>. "+
     "Deseja <b>desativar</b>? Posteriormente você poderá alterar esta propriedade na tela de configurações.",
     buttons:[
       {
