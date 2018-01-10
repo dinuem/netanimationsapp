@@ -1,0 +1,15 @@
+
+.white-board {
+    background-color: white;
+    box-shadow: 0 0 5px #000000;
+}
+
+.subnet-mask-bit, .destination-ip-1-bit{
+    line-height: 15px;
+}
+
+.subnet-package {
+    height: 5%;
+    width: 10%;
+    background-color: #222222;
+}

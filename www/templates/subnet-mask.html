@@ -1,0 +1,50 @@
+<ion-view title="{{'SUBNET_MASK_TITLE' | translate}}">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-content class="has-header bg">
+        <div id="animationFrame" class="animation-frame">
+            <div id="animationFrame" class="animation-frame">
+                <div id="accessibility-content" class="white ">
+                    <a href="" id="content-title"></a>
+                    <p id="content-text"></p>
+                    <span id="content-buttons"></span>
+                </div>
+                <img id="bg" class="subnet floating" src="./img/subnet-mask/subnet-mask-bg.svg" />
+                <img class="router-switch floating" src="./img/subnet-mask/router-switch.svg" />
+                <div class="bar1 floating" style="background-color: #4D4D4D;" ></div>
+                <div class="bar2 floating" style="background-color: #4D4D4D;" ></div>
+                <img class="subnet1 floating" src="./img/subnet-mask/subnet.svg" />
+                <img class="subnet2 floating" src="./img/subnet-mask/subnet.svg" />
+                
+                <div class="ip-rede floating">162.103.X.X</div>
+                <div class="white-board floating"></div>
+                <div class="mask floating">
+                    <div>{{'SUBNET_MASK_DEFAULT_MASK' | translate}}</div>:
+                    <div>255.255.0.0</div>
+                </div>
+                <div class="converting-to-bit floating">{{'SUBNET_MASK_CONVERTING_TO_BIT' | translate}}</div>
+                <div class="mask-bit floating">
+                    <div class="mask-bit-1">11111111.11111111</div>
+                    <div class="dot">.</div>
+                    <div class="mask-bit-2">00000000.00000000</div>
+                </div>
+                <div class="new-mask floating">
+                    <div>{{'SUBNET_MASK_DEFAULT_MASK' | translate}}</div>:
+                    <div>255.255.128.0</div>
+                </div>
+                <div class="new-mask-bit floating">
+                    <div class="mask-bit-1">11111111.11111111.1</div>
+                    <div class="mask-bit-2">0000000.00000000</div>
+                </div>
+                <div class="this-bits-are-to floating">{{'SUBNET_MASK_BITS_ARE' | translate}}</div>
+                <div class="net floating"><b>{{'SUBNET_MASK_NET' | translate}}</b></div>
+                <div class="host floating"><b>{{'SUBNET_MASK_HOST' | translate}}</b></div>
+                <div class="ip1 floating">162.103.0.0</div>
+                <div class="ip2 floating">162.103.128.0</div>
+                <!-- <div class="ip1-bit floating">10100010.01100111.00000000.00000000</div>
+                <div class="ip2-bit floating">10100010.01100111.10000000.00000000</div> -->
+            </div>
+
+    </ion-content>
+</ion-view>
